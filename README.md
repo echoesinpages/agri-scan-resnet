@@ -85,3 +85,16 @@ This project uses the Kaggle API to fetch the dataset.
 2.  This will download a `kaggle.json` file.
 3.  Place this `kaggle.json` file in the **root directory** of this project (`agri-scan-resnet/`).
 4.  The training script will automatically detect it and download the data.
+
+## 🧠 Model Architecture
+
+The system relies on a **Transfer Learning** approach to balance high accuracy with computational efficiency.
+
+* **Base Model:** **ResNet50** (Pre-trained on ImageNet)
+    * **Why ResNet?** Unlike sequential models like VGG16, ResNet50 uses **residual skip-connections**. This allows the network to be much deeper (50 layers) while avoiding the "vanishing gradient" problem, capturing more complex features of plant pathology.
+    * **State:** Frozen (Non-trainable) to preserve learned feature extractors.
+
+* **Custom Classification Head:**
+    1.  **GlobalAveragePooling2D:** Reduces the spatial dimensions of the feature map (7x7x2048) to a single vector (2048). This is more efficient than "Flatten" and reduces the risk of overfitting.
+    2.  **Dropout (0.5):** Randomly deactivates neurons during training to enforce robustness and prevent the model from memorizing the training data.
+    3.  **Dense Output Layer:** A fully connected layer with **33 units** (one for each plant class) using the **Softmax** activation function to output probability scores.
