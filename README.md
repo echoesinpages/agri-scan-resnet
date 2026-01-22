@@ -60,3 +60,17 @@ Clone the project to your local machine using the following command:
 ```bash
 git clone [https://github.com/echoesinpages/agri-scan-resnet.git](https://github.com/echoesinpages/agri-scan-resnet.git)
 cd agri-scan-resnet
+```
+### 3. Create a Virtual Environment (Recommended)
+It is best practice to use a virtual environment to manage dependencies:
+
+**For Windows:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+**For macOS/Linux:**
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
