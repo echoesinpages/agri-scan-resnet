@@ -74,3 +74,8 @@ venv\Scripts\activate
 python -m venv venv
 venv\Scripts\activate
 ```
+### 4. Install Dependencies
+Install all required Python packages listed in the requirements file:
+```bash
+pip install -r requirements.txt
+```
