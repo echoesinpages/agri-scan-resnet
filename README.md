@@ -98,3 +98,16 @@ The system relies on a **Transfer Learning** approach to balance high accuracy w
     1.  **GlobalAveragePooling2D:** Reduces the spatial dimensions of the feature map (7x7x2048) to a single vector (2048). This is more efficient than "Flatten" and reduces the risk of overfitting.
     2.  **Dropout (0.5):** Randomly deactivates neurons during training to enforce robustness and prevent the model from memorizing the training data.
     3.  **Dense Output Layer:** A fully connected layer with **33 units** (one for each plant class) using the **Softmax** activation function to output probability scores.
+
+ ## 🧠 Training the Model
+
+To start the training pipeline using ResNet50:
+
+```bash
+python src/train.py
+```
+**Pipeline Steps:**
+1.  **Ingestion:** Downloads "New Plant Diseases Dataset" from Kaggle.
+2.  **Preprocessing:** Resizes images to `224x224`, normalizes pixel values, and applies data augmentation.
+3.  **Training:** Fine-tunes the ResNet50 model (Frozen base + Custom Head).
+4.  **Evaluation:** Outputs accuracy metrics and saves the best model weights to `model.h5`.
