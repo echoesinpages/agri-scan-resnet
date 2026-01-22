@@ -46,7 +46,7 @@ agri-scan-resnet/
 ├── requirements.txt           # Python dependencies
 ├── README.md                  # Project documentation
 └── LICENSE                    # MIT License
-
+```
 ## 🚀 Installation & Setup
 
 ### 1. Prerequisites
