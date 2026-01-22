@@ -1,0 +1,9 @@
+tensorflow>=2.10.0
+numpy
+pandas
+flask
+kaggle
+pillow
+opencv-python
+matplotlib
+scikit-learn
