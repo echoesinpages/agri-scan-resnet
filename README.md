@@ -79,3 +79,9 @@ Install all required Python packages listed in the requirements file:
 ```bash
 pip install -r requirements.txt
 ```
+### 5. Dataset Configuration
+This project uses the Kaggle API to fetch the dataset.
+1.  Log in to your Kaggle account and go to **Settings** > **API** > **Create New Token**.
+2.  This will download a `kaggle.json` file.
+3.  Place this `kaggle.json` file in the **root directory** of this project (`agri-scan-resnet/`).
+4.  The training script will automatically detect it and download the data.
