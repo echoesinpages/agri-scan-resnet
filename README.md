@@ -46,3 +46,17 @@ agri-scan-resnet/
 ├── requirements.txt           # Python dependencies
 ├── README.md                  # Project documentation
 └── LICENSE                    # MIT License
+
+## 🚀 Installation & Setup
+
+### 1. Prerequisites
+Ensure you have the following installed on your local machine:
+* **Python 3.8+**
+* **Git**
+* **Kaggle Account** (Required to download the dataset automatically)
+
+### 2. Clone the Repository
+Clone the project to your local machine using the following command:
+```bash
+git clone [https://github.com/echoesinpages/agri-scan-resnet.git](https://github.com/echoesinpages/agri-scan-resnet.git)
+cd agri-scan-resnet
