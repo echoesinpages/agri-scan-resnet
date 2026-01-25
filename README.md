@@ -111,3 +111,12 @@ python src/train.py
 2.  **Preprocessing:** Resizes images to `224x224`, normalizes pixel values, and applies data augmentation.
 3.  **Training:** Fine-tunes the ResNet50 model (Frozen base + Custom Head).
 4.  **Evaluation:** Outputs accuracy metrics and saves the best model weights to `model.h5`.
+---
+
+## 🚢 Deployment (Inference)
+
+The project includes a lightweight **Flask** server to simulate a production environment.
+
+### Run Locally
+```bash
+python src/app.py
