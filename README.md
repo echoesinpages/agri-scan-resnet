@@ -120,3 +120,8 @@ The project includes a lightweight **Flask** server to simulate a production env
 ### Run Locally
 ```bash
 python src/app.py
+```
+### Run with Docker
+```bash
+docker build -t agri-scan-api .
+docker run -p 5000:5000 agri-scan-api
