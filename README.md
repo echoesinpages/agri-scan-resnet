@@ -34,18 +34,19 @@ We utilize **Deep Residual Learning** to overcome the degradation problem found 
 
 ```bash
 agri-scan-resnet/
-├── 📂 data/                   # Dataset storage (ignored by git)
-│   └── kaggle.json            # API Key (Manual download required)
-├── 📂 notebooks/              # Jupyter Notebooks for experimentation
-│   └── exploration.ipynb
+├── 📂 docker/                 # Deployment configuration
+│   └── Dockerfile             # Container instructions
+├── 📂 notebooks/              # Research & Experiments
+│   └── agri_scan_resnet50.ipynb # Training with 96% accuracy
 ├── 📂 src/                    # Source code
-│   ├── train.py               # Main training pipeline
-│   ├── model.py               # ResNet50 architecture definition
-│   └── app.py                 # Flask Inference API
-├── Dockerfile                 # Docker configuration for deployment
+│   ├── app.py                 # Streamlit Web Dashboard (Galaxy Theme)
+│   ├── train.py               # Training pipeline script
+│   └── model.py               # ResNet50 Architecture
+├── 📂 data/                   # Raw Dataset (Ignored by Git)
+├── .gitignore                 # Files to exclude from Git
+├── model.h5                   # The trained AI Brain (Weights)
 ├── requirements.txt           # Python dependencies
-├── README.md                  # Project documentation
-└── LICENSE                    # MIT License
+└── README.md                  # Project documentation
 ```
 ## 🚀 Installation & Setup
 
