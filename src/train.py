@@ -5,10 +5,10 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping
 from model import build_model
 
-# --- Configuration ---
+
 DATASET_PATH = 'data'
 KAGGLE_DATASET = 'vipoooool/new-plant-diseases-dataset'
-IMG_SIZE = (224, 224) # Increased from 150x150 to match ResNet standard
+IMG_SIZE = (224, 224) 
 BATCH_SIZE = 32
 EPOCHS = 10
 
@@ -36,14 +36,13 @@ def download_dataset():
 
 def train_model():
     download_dataset()
+   
+    base_dir = os.path.join(DATASET_PATH, 'New Plant Diseases Dataset(Augmented)', 'New Plant Diseases Dataset(Augmented)')
     
-    # Define paths
-    base_dir = os.path.join(DATASET_PATH, 'New Plant Diseases Dataset(Augmented)')
     train_dir = os.path.join(base_dir, 'train')
     valid_dir = os.path.join(base_dir, 'valid')
 
-    # Data Generators (Replaces your manual 'for' loops)
-    # 1. Training: With Augmentation (Flip, Rotate, Zoom)
+    # Data Generators
     train_datagen = ImageDataGenerator(
         rescale=1./255,
         rotation_range=20,
@@ -53,7 +52,40 @@ def train_model():
         fill_mode='nearest'
     )
 
-    # 2. Validation: Just Rescaling
+    valid_datagen = ImageDataGenerator(rescale=1./255)
+
+    print(f"🔄 Loading Images from: {train_dir}") # Added print so you can see the path
+    
+    train_generator = train_datagen.flow_from_directory(
+        train_dir,
+        target_size=IMG_SIZE,
+        batch_size=BATCH_SIZE,
+        class_mode='categorical'
+    )
+
+    valid_generator = valid_datagen.flow_from_directory(
+        valid_dir,
+        target_size=IMG_SIZE,
+        batch_size=BATCH_SIZE,
+        class_mode='categorical'
+    )
+
+    # Build & Train
+    model = build_model(num_classes=train_generator.num_classes)
+
+    checkpoint = ModelCheckpoint('model.h5', save_best_only=True, monitor='val_accuracy', mode='max')
+    early_stop = EarlyStopping(monitor='val_accuracy', patience=3)
+
+    print("🚀 Starting Training...")
+    model.fit(
+        train_generator,
+        epochs=EPOCHS,
+        validation_data=valid_generator,
+        callbacks=[checkpoint, early_stop]
+    )
+    print("🎉 Done! Best model saved to model.h5")
+
+    #Validation
     valid_datagen = ImageDataGenerator(rescale=1./255)
 
     print("🔄 Loading Images...")
