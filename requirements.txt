@@ -1,9 +1,8 @@
+streamlit
 tensorflow>=2.10.0
 numpy
 pandas
-flask
-kaggle
 pillow
-opencv-python
+kaggle
 matplotlib
 scikit-learn
