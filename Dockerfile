@@ -1,26 +1,24 @@
-# 1. Base Image
+# Use a lightweight Python 3.9 image to keep the container small
 FROM python:3.9-slim
 
-# 2. Set Working Directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# 3. Install System Dependencies
-RUN apt-get update && apt-get install -y \
-    libgl1 \
-    libglib2.0-0 \
-    && rm -rf /var/lib/apt/lists/*
-
-# 4. Copy Dependency Manifest
+# Copy the dependency file first (to cache layers and speed up builds)
 COPY requirements.txt .
 
-# 5. Install Python Libraries
+# Install dependencies
+# We add --no-cache-dir to keep the image size down
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 6. Copy Application Code
-COPY . .
+# Copy the rest of the application code
+COPY src/ src/
 
-# 7. Expose Port
-EXPOSE 5000
+# Copy the AI Model (Critical: The model must be in your project root folder)
+COPY model.h5 .
 
-# 8. Entrypoint
-CMD ["python", "src/app.py"]
+# Expose the port Streamlit runs on
+EXPOSE 8501
+
+# Command to run the app when the container starts
+CMD ["streamlit", "run", "src/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
