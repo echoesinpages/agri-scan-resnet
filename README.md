@@ -58,7 +58,7 @@ Ensure you have the following installed on your local machine:
 ### 2. Clone the Repository
 Clone the project to your local machine using the following command:
 ```bash
-git clone [https://github.com/echoesinpages/agri-scan-resnet.git](https://github.com/echoesinpages/agri-scan-resnet.git)
+git clone https://github.com/echoesinpages/agri-scan-resnet.git
 cd agri-scan-resnet
 ```
 ### 3. 📥 Download the AI Model (Critical Step)
