@@ -18,10 +18,10 @@ def download_dataset():
     """
     # Check if folder exists to avoid re-downloading
     if os.path.exists(os.path.join(DATASET_PATH, 'New Plant Diseases Dataset(Augmented)')):
-        print("✅ Dataset found. Skipping download.")
+        print("Dataset found")
         return
 
-    print("⬇️  Downloading dataset... (Ensure kaggle.json is in root)")
+    print("Downloading dataset... (Ensure kaggle.json is in root)")
     os.makedirs(DATASET_PATH, exist_ok=True)
     
     # Use Kaggle API
@@ -30,7 +30,7 @@ def download_dataset():
         raise Exception("❌ Download failed. Check kaggle.json!")
 
     # Unzip
-    print("📦 Unzipping...")
+    print(" Unzipping...")
     with zipfile.ZipFile(os.path.join(DATASET_PATH, 'new-plant-diseases-dataset.zip'), 'r') as z:
         z.extractall(DATASET_PATH)
 
@@ -54,7 +54,7 @@ def train_model():
 
     valid_datagen = ImageDataGenerator(rescale=1./255)
 
-    print(f"🔄 Loading Images from: {train_dir}") # Added print so you can see the path
+    print(f"Loading Images from: {train_dir}") 
     
     train_generator = train_datagen.flow_from_directory(
         train_dir,
@@ -76,19 +76,19 @@ def train_model():
     checkpoint = ModelCheckpoint('model.h5', save_best_only=True, monitor='val_accuracy', mode='max')
     early_stop = EarlyStopping(monitor='val_accuracy', patience=3)
 
-    print("🚀 Starting Training...")
+    print("Starting Training...")
     model.fit(
         train_generator,
         epochs=EPOCHS,
         validation_data=valid_generator,
         callbacks=[checkpoint, early_stop]
     )
-    print("🎉 Done! Best model saved to model.h5")
+    print("Done!model saved to model.h5")
 
     #Validation
     valid_datagen = ImageDataGenerator(rescale=1./255)
 
-    print("🔄 Loading Images...")
+    print("Loading Images...")
     train_generator = train_datagen.flow_from_directory(
         train_dir,
         target_size=IMG_SIZE,
@@ -109,14 +109,14 @@ def train_model():
     checkpoint = ModelCheckpoint('model.h5', save_best_only=True, monitor='val_accuracy', mode='max')
     early_stop = EarlyStopping(monitor='val_accuracy', patience=3)
 
-    print("🚀 Starting Training...")
+    print("Starting Training...")
     model.fit(
         train_generator,
         epochs=EPOCHS,
         validation_data=valid_generator,
         callbacks=[checkpoint, early_stop]
     )
-    print("🎉 Done! Best model saved to model.h5")
+    print("Done!model saved to model.h5")
 
 if __name__ == "__main__":
     train_model()
