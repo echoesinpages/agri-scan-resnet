@@ -27,7 +27,7 @@ def download_dataset():
     # Use Kaggle API
     exit_code = os.system(f"kaggle datasets download -d {KAGGLE_DATASET} -p {DATASET_PATH}")
     if exit_code != 0:
-        raise Exception("❌ Download failed. Check kaggle.json!")
+        raise Exception("Download failed. Check kaggle.json!")
 
     # Unzip
     print(" Unzipping...")
