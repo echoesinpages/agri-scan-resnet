@@ -5,9 +5,8 @@ import os
 import time
 from PIL import Image
 
-# ==========================================
 # 1. PAGE CONFIGURATION & THEME
-# ==========================================
+
 st.set_page_config(
     page_title="Agri-Scan Galaxy",
     page_icon="✨",
@@ -15,7 +14,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- BackGround (Dark Space Gradient) ---
+# BackGround (Dark Space Gradient) 
 page_bg_css = """
 <style>
 /* 1. Main Background: Deep Space Gradient */
@@ -53,9 +52,8 @@ h1, h2, h3, h4, h5, h6, p, li, span, div, label {
 """
 st.markdown(page_bg_css, unsafe_allow_html=True)
 
-# ==========================================
 # 2. LOAD CLASSES & MODEL
-# ==========================================
+
 FALLBACK_CLASSES = [
     'Apple___Apple_scab', 'Apple___Black_rot', 'Apple___Cedar_apple_rust', 'Apple___healthy',
     'Blueberry___healthy', 'Cherry_(including_sour)___Powdery_mildew', 'Cherry_(including_sour)___healthy',
@@ -87,9 +85,8 @@ def load_model():
 
 model = load_model()
 
-# ==========================================
 # 3. SIDEBAR DASHBOARD
-# ==========================================
+
 with st.sidebar:
     st.title("✨ Agri-Scan")
     st.markdown("---")
