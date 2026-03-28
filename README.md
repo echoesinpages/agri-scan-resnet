@@ -6,10 +6,11 @@
 ![Frontend](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B)
 ![Deployment](https://img.shields.io/badge/Deployment-Docker-2496ED)
 ![License](https://img.shields.io/badge/License-MIT-green)
+[![Version](https://img.shields.io/badge/Version-2.1_Galaxy-purple)
 
 ## 📖 Executive Summary
 
-This repository hosts a production-ready **Computer Vision** solution designed for **Precision Agriculture**. It addresses the challenge of automated plant pathology by deploying a Deep Learning model capable of identifying **33 distinct plant leaf diseases** with 96% accuracy.
+This repository hosts a production-ready **Computer Vision** solution designed for **Precision Agriculture**. It addresses the challenge of automated plant pathology by deploying a Deep Learning model capable of identifying **38 distinct plant leaf diseases** with 96% accuracy.
 
 Unlike standard experimental notebooks, this project demonstrates a complete **Machine Learning Lifecycle (MLOps)**, encompassing data ingestion, transfer learning with **ResNet50**, model evaluation, and a deployment pipeline featuring an interactive **Streamlit Dashboard**.
 
@@ -21,7 +22,7 @@ The solution is built on a robust tech stack designed for scalability and perfor
 
 * **Core Model:** **ResNet50** (Deep Residual Network) pre-trained on ImageNet.
 * **Technique:** Transfer Learning with fine-tuned top layers for domain adaptation.
-* **Input Data:** 33 Classes (New Plant Diseases Dataset).
+* **Input Data:** 38 Classes (New Plant Diseases Dataset).
 * **Interface:** Interactive Web Dashboard (Streamlit).
 * **Containerization:** Docker for consistent deployment.
 
@@ -100,8 +101,7 @@ streamlit run src/app.py
 Build and run the containerized version:
 ```bash
 # Build the image
-docker build -t agri-scan-app -f docker/Dockerfile .
-
+docker build -t agri-scan-app .
 # Run the container
 docker run -p 8501:8501 agri-scan-app
 ```
