@@ -6,7 +6,7 @@
 ![Frontend](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B)
 ![Deployment](https://img.shields.io/badge/Deployment-Docker-2496ED)
 ![License](https://img.shields.io/badge/License-MIT-green)
-[![Version](https://img.shields.io/badge/Version-2.1_Galaxy-purple)
+![Version](https://img.shields.io/badge/Version-2.1_Galaxy-purple)
 
 ## 📖 Executive Summary
 
